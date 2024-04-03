@@ -9,7 +9,7 @@ public class Book {
     public Book(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException, NullPointerException {
         if(titolo.isEmpty() || autore.isEmpty() || editore.isEmpty()){
             throw new NullPointerException("titolo, autore ed editore non possono essere vuoti");
-        } else if (numeroPagine <= 0){
+        } else if (numeroPagine <= 5){
             throw new IllegalArgumentException("il numero di pagine non può essere <=0 ");
         }
         this.titolo = titolo;
