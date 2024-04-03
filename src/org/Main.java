@@ -12,20 +12,22 @@ public class Main {
                 numero = Integer.parseInt(scan.nextLine());
                 if(numero > 0) flag = true;
             } catch (NumberFormatException e) {
-                System.out.println("scrivere un numero itero valido "+e.getMessage());
+                System.out.println("scrivere un numero intero valido ");
             }
 
         } while (!flag);
 
+//        scan.close();
         return numero;
     }
 
     public static String insertString(){
         Scanner scan = new Scanner(System.in);
-        String outString = "";
-        while (outString.length() == 0); {
+        String outString = null;
+        do {
             outString = scan.nextLine();
-        }
+            if(outString.length() == 0) System.out.println("Il campo non puo essere nullo ");
+        } while (outString.length() == 0);
         return outString;
     }
 
@@ -46,7 +48,7 @@ public class Main {
 
         String titolo = "titolo ";
 
-        int numeroPagine = 2;
+        int numeroPagine = 1;
 
         String autore = "autore";
 
@@ -56,6 +58,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        //inser
         System.out.print("Numero di libri da inserire: ");
         int numeroPagine = insertInt();
 
@@ -64,7 +67,7 @@ public class Main {
 
         //creazione dei libri
         for (int i = 0; i < libri.length; i++) {
-            libri[i] = testLibro();
+            libri[i] = createLibro();
         }
 
         System.out.println("\n\nStampo la lista dei libri ");
