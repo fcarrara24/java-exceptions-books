@@ -48,11 +48,16 @@ public class Main {
         return new Book(titolo, numeroPagine, autore, editore);
     }
 
+    /**
+     * stampa del file di inserimento
+     */
     public static void printBooksFromFile(){
         try(Scanner fileReader = new Scanner(new File("./res/file.txt"))){
             while (fileReader.hasNextLine()){
                 String linea = fileReader.nextLine();
-                System.out.println(linea);
+                String[] arrayLine = linea.split(",");
+
+                System.out.println("titolo: "+arrayLine[0]+", numero pagine: "+arrayLine[1]+", autore: "+arrayLine[2]+", editore: "+arrayLine[3]);
             }
 
         } catch ( Exception e){
@@ -60,6 +65,10 @@ public class Main {
         }
     }
 
+    /**
+     * uso controllato del filewriter
+     * @param libri
+     */
     public static void  insertBooksInFile(Book[] libri){
         FileWriter fileWriter = null;
 
@@ -105,7 +114,7 @@ public class Main {
         System.out.println("salvataggio dati nel file esterno ");
         printBooksFromFile();
 
-        System.out.println("libri visti con getlibri ");
+        System.out.println("libri visti con toString ");
         //stampa dei libri inseriti
         for (Book libro : libri){
             System.out.println(libro.toString());
