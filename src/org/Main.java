@@ -1,37 +1,18 @@
 package org;
 
-import java.util.Scanner;
+
+import static org.UtilityScanner.*;
 
 public class Main {
-    public static int insertInt(){
-        Scanner scan = new Scanner(System.in);
-        boolean flag = false;
-        int numero = 0;
-        do{
-            try {
-                numero = Integer.parseInt(scan.nextLine());
-                if(numero > 0) flag = true;
-            } catch (NumberFormatException e) {
-                System.out.println("scrivere un numero intero valido ");
-            }
 
-        } while (!flag);
-
-//        scan.close();
-        return numero;
-    }
-
-    public static String insertString(){
-        Scanner scan = new Scanner(System.in);
-        String outString = null;
-        do {
-            outString = scan.nextLine();
-            if(outString.length() == 0) System.out.println("Il campo non puo essere nullo ");
-        } while (outString.length() == 0);
-        return outString;
-    }
 
     public static Libro createLibro(){
+
+        System.out.println("/***************\\" + "\n" +
+                            "| nuovo libro.. |" + "\n" +
+                             "\\***************/");
+
+        // le classi insertString e insertInt sono importate da UtilityScanner e sono statiche
         System.out.print("titolo ");
         String titolo = insertString();
         System.out.print("numero pagine ");
@@ -40,6 +21,11 @@ public class Main {
         String autore = insertString();
         System.out.print("editore ");
         String editore = insertString();
+
+        System.out.println("/*************\\" + "\n" +
+                           "| creazione.. |" + "\n" +
+                           "\\*************/" + "\n" + "\n" + "\n"
+        );
 
         return new Libro(titolo, numeroPagine, autore, editore);
     }
