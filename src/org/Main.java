@@ -1,6 +1,11 @@
 package org;
 
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
 import static org.UtilityScanner.*;
 
 public class Main {
@@ -43,6 +48,45 @@ public class Main {
         return new Book(titolo, numeroPagine, autore, editore);
     }
 
+    public static void printBooksFromFile(){
+        try(Scanner fileReader = new Scanner(new File("./res/file.txt"))){
+            while (fileReader.hasNextLine()){
+                String linea = fileReader.nextLine();
+                System.out.println(linea);
+            }
+
+        } catch ( Exception e){
+            System.out.println("file not found");
+        }
+    }
+
+    public static void  insertBooksInFile(Book[] libri){
+        FileWriter fileWriter = null;
+
+        try {
+            fileWriter = new FileWriter("./res/file.txt");
+            // inserisco tutti i dati del libro
+
+            for (Book libro: libri) {
+                fileWriter.write(libro.toDocument()+"\n");
+            }
+
+        } catch (IOException e) {
+            System.out.println("non è possibile aprire il file");
+        } finally {
+            if(fileWriter != null){
+                //chiudo il filewriter, lo metto in un blocco di eccezioni nel caso in cui il file non si riesca a chiudere
+                try {
+                    fileWriter.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
         //inser
         System.out.print("Numero di libri da inserire: ");
@@ -56,7 +100,12 @@ public class Main {
             libri[i] = createLibro();
         }
 
-        System.out.println("\n\nStampo la lista dei libri ");
+        insertBooksInFile(libri);
+
+        System.out.println("salvataggio dati nel file esterno ");
+        printBooksFromFile();
+
+        System.out.println("libri visti con getlibri ");
         //stampa dei libri inseriti
         for (Book libro : libri){
             System.out.println(libro.toString());

@@ -77,4 +77,8 @@ public class Book {
                 ", editore='" + editore + '\'' +
                 '}';
     }
+
+    public String toDocument(){
+        return titolo+","+numeroPagine+","+autore+","+editore;
+    }
 }

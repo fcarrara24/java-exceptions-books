@@ -13,4 +13,3 @@ Garantire che lo stato del libro sia sempre coerente con questi vincoli utilizza
   Chiede i dati di un libro (titolo, numero pagine, autore, editore), istanzia un nuovo oggetto della classe Book e lo inserisce nell’array. Lo fa per il numero di elementi previsti.
   Gestire (o anticipare) eventuali errori in modo che il programma non vada in crash.
   Al termine dell’inserimento scrivere tutti i dati dei libri in un file e in seguito rileggerli dal file e mostrarli a video.
-  Buon lavoro! :muscolo:
