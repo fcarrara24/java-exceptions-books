@@ -17,10 +17,15 @@ public class Grid {
         System.out.println("3 "+this.grid[2][0]+" "+this.grid[2][1]+" "+this.grid[2][2]);
     }
 
-    public void insertTile(int x, int y) throws IndexOutOfBoundsException {
+    public void insertTile(int x, int y, String player) throws IndexOutOfBoundsException, IllegalArgumentException {
         if(!this.inBounds(x, y)){
             throw new IndexOutOfBoundsException("parametri non validi");
+        } else if (player != "A" || player != "B"){
+            throw new IllegalArgumentException("chiamare il giocatore in modo corretto ");
+        } else if (this.grid[x][y] != ""){
+            throw new IllegalArgumentException("chiamare il giocatore in modo corretto ");
         }
+        this.grid[x][y] = player;
     }
 
     private boolean inBounds(int x, int y){
@@ -54,5 +59,16 @@ public class Grid {
         if(grid[3][0] != "" && grid[3][0] == grid[1][1] && grid[1][1] == grid[0][2] ) return true;
 
         return false;
+    }
+
+    public boolean allFull(){
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                if(grid[i][j] == "") return false;
+            }
+        }
+
+        return true;
+
     }
 }
