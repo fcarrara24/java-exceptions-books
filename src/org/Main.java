@@ -12,27 +12,40 @@ public class Main {
 
 
     public static Book createLibro(){
+        Book libro = null;
 
-        System.out.println("/***************\\" + "\n" +
-                            "| nuovo libro.. |" + "\n" +
-                             "\\***************/");
+        boolean flag = false;
 
-        // le classi insertString e insertInt sono importate da UtilityScanner e sono statiche
-        System.out.print("titolo ");
-        String titolo = insertString();
-        System.out.print("numero pagine ");
-        int numeroPagine = insertInt();
-        System.out.print("autore ");
-        String autore = insertString();
-        System.out.print("editore ");
-        String editore = insertString();
+        do {
+            try{
+                System.out.println("/***************\\" + "\n" +
+                        "| nuovo libro.. |" + "\n" +
+                        "\\***************/");
 
-        System.out.println("/*************\\" + "\n" +
-                           "| creazione.. |" + "\n" +
-                           "\\*************/" + "\n" + "\n" + "\n"
-        );
+                    // le classi insertString e insertInt sono importate da UtilityScanner e sono statiche
+                    System.out.print("titolo ");
+                    String titolo = insertString();
+                    System.out.print("numero pagine ");
+                    int numeroPagine = insertInt();
+                    System.out.print("autore ");
+                    String autore = insertString();
+                    System.out.print("editore ");
+                    String editore = insertString();
 
-        return new Book(titolo, numeroPagine, autore, editore);
+                    System.out.println("/*************\\" + "\n" +
+                            "| creazione.. |" + "\n" +
+                            "\\*************/" + "\n" + "\n" + "\n"
+                    );
+                    libro = new Book(titolo, numeroPagine, autore, editore);
+
+                    flag = true;
+
+            } catch (Exception e){
+                System.out.println("errore "+e.getMessage());
+            }
+        } while (!flag);
+
+        return libro;
     }
 
     public static Book testLibro(){
