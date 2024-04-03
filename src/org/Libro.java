@@ -8,9 +8,11 @@ public class Libro {
     private String autore;
     private String editore;
 
-    public Libro(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException {
-        if(titolo.isEmpty() || autore.isEmpty() || editore.isEmpty() || numeroPagine <= 0){
-            throw new IllegalArgumentException("titolo, autore ed editore non possono essere vuoti e il numero di pagine non può essere <=0.");
+    public Libro(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException, NullPointerException {
+        if(titolo.isEmpty() || autore.isEmpty() || editore.isEmpty()){
+            throw new NullPointerException("titolo, autore ed editore non possono essere vuoti");
+        } else if (numeroPagine <= 0){
+            throw new IllegalArgumentException("il numero di pagine non può essere <=0 ");
         }
         this.titolo = titolo;
         this.numeroPagine = numeroPagine;
@@ -64,5 +66,17 @@ public class Libro {
             throw new IllegalArgumentException("l'editore non puo essere vuoto");
         }
         this.editore = editore;
+    }
+
+    // toString
+
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "titolo='" + titolo + '\'' +
+                ", numeroPagine=" + numeroPagine +
+                ", autore='" + autore + '\'' +
+                ", editore='" + editore + '\'' +
+                '}';
     }
 }
