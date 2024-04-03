@@ -6,7 +6,7 @@ import static org.UtilityScanner.*;
 public class Main {
 
 
-    public static Libro createLibro(){
+    public static Book createLibro(){
 
         System.out.println("/***************\\" + "\n" +
                             "| nuovo libro.. |" + "\n" +
@@ -27,10 +27,10 @@ public class Main {
                            "\\*************/" + "\n" + "\n" + "\n"
         );
 
-        return new Libro(titolo, numeroPagine, autore, editore);
+        return new Book(titolo, numeroPagine, autore, editore);
     }
 
-    public static  Libro testLibro(){
+    public static Book testLibro(){
 
         String titolo = "titolo ";
 
@@ -40,7 +40,7 @@ public class Main {
 
         String editore = "editore";
 
-        return new Libro(titolo, numeroPagine, autore, editore);
+        return new Book(titolo, numeroPagine, autore, editore);
     }
 
     public static void main(String[] args) {
@@ -49,7 +49,7 @@ public class Main {
         int numeroPagine = insertInt();
 
         //creazione dell'array
-        Libro[] libri = new Libro[numeroPagine];
+        Book[] libri = new Book[numeroPagine];
 
         //creazione dei libri
         for (int i = 0; i < libri.length; i++) {
@@ -58,7 +58,7 @@ public class Main {
 
         System.out.println("\n\nStampo la lista dei libri ");
         //stampa dei libri inseriti
-        for (Libro libro : libri){
+        for (Book libro : libri){
             System.out.println(libro.toString());
         }
 

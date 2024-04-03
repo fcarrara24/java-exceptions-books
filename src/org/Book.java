@@ -1,14 +1,12 @@
 package org;
 
-import java.nio.channels.IllegalChannelGroupException;
-
-public class Libro {
+public class Book {
     private String titolo;
     private int numeroPagine;
     private String autore;
     private String editore;
 
-    public Libro(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException, NullPointerException {
+    public Book(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException, NullPointerException {
         if(titolo.isEmpty() || autore.isEmpty() || editore.isEmpty()){
             throw new NullPointerException("titolo, autore ed editore non possono essere vuoti");
         } else if (numeroPagine <= 0){
