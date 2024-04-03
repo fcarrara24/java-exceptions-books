@@ -9,11 +9,12 @@ public class Main {
         g.printGrid();
         boolean flag = false;
 
+        System.out.println("\n\nturno giocatore "+p);
         do {
             try {
                 System.out.print("inserire le coordinate x: ");
                 x = UtilityScanner.insertInt();
-                System.out.print("inserire le coordinate x: ");
+                System.out.print("inserire le coordinate y: ");
                 y = UtilityScanner.insertInt();
                 g.insertTile(x-1, y-1, p);
                 flag = true;
@@ -36,6 +37,7 @@ public class Main {
         int turno = 1;
 
         while(!win && !draw){
+
             draw = g.allFull();
 
             if(!draw){

@@ -8,19 +8,30 @@ public class Grid {
 
     public Grid() {
         this.grid = new String[HEIGHT][WIDTH];
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                this.grid[i][j] = "";
+            }
+        }
+    }
+
+    private String fillGrid(int x,int y){
+        return (this.grid[x][y] == "" ? " " : this.grid[x][y]);
     }
 
     public void printGrid(){
+
+
         System.out.println("  1 2 3");
-        System.out.println("1 "+this.grid[0][0]+" "+this.grid[0][1]+" "+this.grid[0][2]);
-        System.out.println("2 "+this.grid[1][0]+" "+this.grid[1][1]+" "+this.grid[1][2]);
-        System.out.println("3 "+this.grid[2][0]+" "+this.grid[2][1]+" "+this.grid[2][2]);
+        System.out.println("1 "+this.fillGrid(0,0)+" "+this.fillGrid(0,1)+" "+this.fillGrid(0,2));
+        System.out.println("1 "+this.fillGrid(1,0)+" "+this.fillGrid(1,1)+" "+this.fillGrid(1,2));
+        System.out.println("1 "+this.fillGrid(2,0)+" "+this.fillGrid(2,1)+" "+this.fillGrid(2,2));
     }
 
     public void insertTile(int x, int y, String player) throws IndexOutOfBoundsException, IllegalArgumentException {
         if(!this.inBounds(x, y)){
             throw new IndexOutOfBoundsException("parametri non validi");
-        } else if (player != "A" || player != "B"){
+        } else if (player != "A" && player != "B"){
             throw new IllegalArgumentException("chiamare il giocatore in modo corretto ");
         } else if (this.grid[x][y] != ""){
             throw new IllegalArgumentException("chiamare il giocatore in modo corretto ");
@@ -56,7 +67,7 @@ public class Grid {
 
         //two diagonal
         if(grid[0][0] != "" && grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2] ) return true;
-        if(grid[3][0] != "" && grid[3][0] == grid[1][1] && grid[1][1] == grid[0][2] ) return true;
+        if(grid[2][0] != "" && grid[2][0] == grid[1][1] && grid[1][1] == grid[0][2] ) return true;
 
         return false;
     }
