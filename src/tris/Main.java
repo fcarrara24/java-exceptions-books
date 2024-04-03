@@ -12,9 +12,9 @@ public class Main {
         System.out.println("\n\nturno giocatore "+p);
         do {
             try {
-                System.out.print("inserire le coordinate x: ");
+                System.out.print("inserire le coordinate orizzontale: ");
                 x = UtilityScanner.insertInt();
-                System.out.print("inserire le coordinate y: ");
+                System.out.print("inserire le coordinate verticale: ");
                 y = UtilityScanner.insertInt();
                 g.insertTile(x-1, y-1, p);
                 flag = true;
@@ -35,7 +35,7 @@ public class Main {
         boolean win = false;
         boolean draw = false;
         int turno = 1;
-
+        //g.testFull();
         while(!win && !draw){
 
             draw = g.allFull();
@@ -53,6 +53,7 @@ public class Main {
             turno ++;
         }
 
+        g.printGrid();
         // stampo la vittoria
         if(draw) System.out.println("pareggio ");
         else if (win) {

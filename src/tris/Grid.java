@@ -24,8 +24,8 @@ public class Grid {
 
         System.out.println("  1 2 3");
         System.out.println("1 "+this.fillGrid(0,0)+" "+this.fillGrid(0,1)+" "+this.fillGrid(0,2));
-        System.out.println("1 "+this.fillGrid(1,0)+" "+this.fillGrid(1,1)+" "+this.fillGrid(1,2));
-        System.out.println("1 "+this.fillGrid(2,0)+" "+this.fillGrid(2,1)+" "+this.fillGrid(2,2));
+        System.out.println("2 "+this.fillGrid(1,0)+" "+this.fillGrid(1,1)+" "+this.fillGrid(1,2));
+        System.out.println("3 "+this.fillGrid(2,0)+" "+this.fillGrid(2,1)+" "+this.fillGrid(2,2));
     }
 
     public void insertTile(int x, int y, String player) throws IndexOutOfBoundsException, IllegalArgumentException {
@@ -41,6 +41,13 @@ public class Grid {
 
     private boolean inBounds(int x, int y){
         return (x>= 0 && x<3 && y>=0 && y<3);
+    }
+    public void testFull(){
+        this.grid = new String[][]{
+                {"A", "B", "B"},
+                {"B", "C", "A"},
+                {"B", "A", ""}
+        };
     }
 
     public boolean checkwin(String player){
